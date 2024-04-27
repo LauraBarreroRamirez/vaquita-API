@@ -1,21 +1,28 @@
 import groupService from "../services/group.service.js";
 
-const getAll = (req, res) => {
+console.log("todos los grupos");
+
+const getAll = async (req, res) => {
+  console.log("entro a getAll");
   const groups = groupService.getAll();
   res.json(groups);
+  console.log("Todos los grupos acá");
 };
 
-const get = (req, res) => {
+const get = async (req, res) => {
   const groupId = parseInt(req.params.id);
   const group = groupService.getById(groupId);
+  console.log("pase por acá antes");
   if (group == null || group == undefined) {
     res.status(404);
+    console.log("pase por acá");
     return;
   }
+  console.log("pase por acá despues");
   res.status(200).json(group);
 };
 
-const create = (req, res) => {
+const create = async (req, res) => {
   const newGroup = req.body;
   if (!newGroup?.color) {
     newGroup.color = "#d81b73";
@@ -35,7 +42,7 @@ const create = (req, res) => {
   res.status(201).json(createGroup);
 };
 
-const update = (req, res) => {
+const update = async (req, res) => {
   const groupUpdate = req.body;
   const createGroup = groupService.update(groupUpdate);
   if (createGroup === null) {
@@ -44,7 +51,7 @@ const update = (req, res) => {
   res.status(200).json(createGroup);
 };
 
-const del = (req, res) => {
+const del = async (req, res) => {
   const groupId = parseInt(req.params.id);
   const group = groupService.delete(groupId);
   if (group) {

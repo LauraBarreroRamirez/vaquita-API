@@ -1,8 +1,10 @@
 import { Model } from "../lib/model.js";
 
 const model = Model();
+console.log("model");
 
 const getAll = () => {
+  console.log("pase por acá getAll");
   const orderGroups = model.getAll().sort(function (a, b) {
     if (a.id < b.id) {
       return 1;
@@ -15,6 +17,7 @@ const getAll = () => {
 };
 
 const getById = (id) => {
+  console.log("pase por acá getById");
   const foundGroup = model.getById(id);
 
   return foundGroup;
@@ -46,6 +49,7 @@ const update = (group) => {
 };
 
 const del = (id) => {
+  console.log("delete");
   return model.delete(id);
 };
 
