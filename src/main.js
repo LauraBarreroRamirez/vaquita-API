@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.port || 3001;
 const { Pool, Client } = pg;
 
-//coneccion a postgres
+//conexion a postgres
 const obtenerCategorias = async () => {
   const client = new Client({
     user: process.env.PGUSER,
