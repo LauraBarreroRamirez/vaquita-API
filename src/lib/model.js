@@ -1,3 +1,5 @@
+import connection from "./connection.js";
+
 const Model = () => {
   const entities = [
     {
